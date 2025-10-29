@@ -1,0 +1,13 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TaskController;
+
+Route::get('/ping', fn() => response()->json(['pong' => true]));
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login',    [AuthController::class, 'login']);
+Route::get('/me',        [AuthController::class, 'me']);
+
+Route::apiResource('tasks', TaskController::class);
